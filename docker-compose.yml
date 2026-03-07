@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # 1. Brankas Memori: PostgreSQL dengan ekstensi Vector AI
+  vector-db:
+    image: pgvector/pgvector:pg16
+    container_name: rag-postgres-vector
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: supersecretpassword
+      POSTGRES_DB: enterprise_rag_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgvector-data:/var/lib/postgresql/data
+    networks:
+      - rag-network
+
+# Persiapan memori persisten agar data tidak hilang saat server mati
+volumes:
+  pgvector-data:
+
+# Jaringan internal yang terisolasi untuk Microservices kita nanti
+networks:
+  rag-network:
+    driver: bridge

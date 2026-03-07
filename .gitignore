@@ -1,0 +1,9 @@
+# Mengabaikan file konfigurasi rahasia
+.env
+
+# Mengabaikan folder lingkungan virtual Python
+python-ai/venv/
+
+# Mengabaikan file executable Golang (hasil build)
+*.exe
+golang-api/main
