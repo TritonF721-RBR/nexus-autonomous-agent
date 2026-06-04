@@ -1,0 +1,41 @@
+name: Enterprise AI Agent CI
+
+# CI ini akan otomatis berjalan setiap kali kamu melakukan 'git push'
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  # TUGAS 1: Mengetes Otot Gateway (Golang)
+  build-golang:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup Golang
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.21' # Server GitHub akan memakai Golang v1.21
+
+    - name: Build Golang API
+      # Perintah ini mengecek apakah kode Golang-mu bisa di-compile tanpa error
+      run: go build -v ./...
+
+  # TUGAS 2: Mengetes Otak AI (Python)
+  build-python:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Check Python Syntax
+      # Perintah ini mengecek apakah ada error fatal/typo di kode Python-mu
+      run: python -m py_compile main.py

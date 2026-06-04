@@ -15,7 +15,7 @@ var DB *gorm.DB
 
 func ConnectDatabase() {
 	// Membaca konfigurasi dari file .env
-	err := godotenv.Load()
+	err := godotenv.Load("../.env")
 	if err != nil {
 		log.Println("Warning: Error loading .env file")
 	}

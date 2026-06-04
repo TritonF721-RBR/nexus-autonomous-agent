@@ -1,9 +1,32 @@
-# Mengabaikan file konfigurasi rahasia
+# =========================================
+# 1. SECURITY / KEAMANAN (SANGAT FATAL)
+# =========================================
+# Mengabaikan semua file .env di folder mana pun
 .env
+**/.env
 
-# Mengabaikan folder lingkungan virtual Python
-python-ai/venv/
+# =========================================
+# 2. PYTHON ENVIRONMENT
+# =========================================
+# Mengabaikan folder environment dan cache sistem
+python-agent/venv/
+venv/
+__pycache__/
+*.pyc
 
-# Mengabaikan file executable Golang (hasil build)
+# =========================================
+# 3. GOLANG ENVIRONMENT
+# =========================================
+# Mengabaikan file hasil build (binary/exe) agar tidak memberatkan GitHub
 *.exe
+*.out
+*.exe~
 golang-api/main
+
+# =========================================
+# 4. OS & IDE (VS CODE)
+# =========================================
+# Mengabaikan konfigurasi lokal text editor
+.vscode/
+.idea/
+.DS_Store

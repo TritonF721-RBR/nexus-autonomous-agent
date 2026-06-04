@@ -9,7 +9,7 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: supersecretpassword
-      POSTGRES_DB: enterprise_rag_db
+      POSTGRES_DB: agent_db
     ports:
       - "5433:5432"
     volumes:
