@@ -1,6 +1,5 @@
 name: Enterprise AI Agent CI
 
-# CI ini akan otomatis berjalan setiap kali kamu melakukan 'git push'
 on:
   push:
     branches: [ "main", "master" ]
@@ -18,10 +17,11 @@ jobs:
     - name: Setup Golang
       uses: actions/setup-go@v5
       with:
-        go-version: '1.21' # Server GitHub akan memakai Golang v1.21
+        go-version: '1.21' 
 
     - name: Build Golang API
-      # Perintah ini mengecek apakah kode Golang-mu bisa di-compile tanpa error
+      # Beritahu robot untuk masuk ke kamar Golang dulu
+      working-directory: ./golang-api
       run: go build -v ./...
 
   # TUGAS 2: Mengetes Otak AI (Python)
@@ -37,5 +37,6 @@ jobs:
         python-version: '3.10'
 
     - name: Check Python Syntax
-      # Perintah ini mengecek apakah ada error fatal/typo di kode Python-mu
+      # Beritahu robot untuk masuk ke kamar Python dulu
+      working-directory: ./python-agent
       run: python -m py_compile main.py
