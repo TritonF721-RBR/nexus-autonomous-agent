@@ -37,6 +37,7 @@ jobs:
         python-version: '3.10'
 
     - name: Check Python Syntax
-      # Beritahu robot untuk masuk ke kamar Python dulu
-      working-directory: ./python-agent
-      run: python -m py_compile main.py
+      # Kita gunakan perintah 'cd' agar 100% aman dari error spasi YAML
+      run: |
+        cd python-agent
+        python -m py_compile main.py
