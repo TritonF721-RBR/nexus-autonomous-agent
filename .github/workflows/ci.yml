@@ -39,5 +39,5 @@ jobs:
     - name: Check Python Syntax
       # Kita gunakan perintah 'cd' agar 100% aman dari error spasi YAML
       run: |
-        cd python-agent
+        cd python-ai
         python -m py_compile main.py
